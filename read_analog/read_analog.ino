@@ -1,18 +1,28 @@
-// 必要なライブラリをインクルード
-#include <ESP8266WiFi.h>
-
-// アナログ入力ピン
 const int analogInputPin = A0;
+const int buttonPin4 = 4;
+const int motorPin5 = 5;
+int value = 0;
+int x;
 
 void setup() {
-  // シリアル通信の初期化
   Serial.begin(9600);
+  pinMode(buttonPin4,INPUT_PULLUP);
+  pinMode(motorPin5,OUTPUT);
 }
 
 void loop() {
-  // アナログ入力値を読み取る
+  if (Serial.available() > 0){
+    char data = Serial.read();
+    if (data == "0"){
+      digitalWrite(motorPin5,LOW);
+      }else if(data == "1"){
+       digitalWrite(motorPin5,HIGH);
+        }
+    }
+  value = digitalRead(buttonPin4);
+  value = !value; //INPUT_PULLUPの値の反転を元に戻す
   int analogValue = analogRead(analogInputPin);
-  Serial.print(0);
+  Serial.print(value);
   Serial.print(" ");
   Serial.println(analogValue);
 
