@@ -14,13 +14,14 @@ void loop() {
   if (Serial.available() > 0){
     char data = Serial.read();
     if (data == "0"){
-      digitalWrite(motorPin5,LOW);
-      }else if(data == "1"){
-       digitalWrite(motorPin5,HIGH);
-        }
+    digitalWrite(motorPin5,LOW);
+    }else if(data == "1"){
+    digitalWrite(motorPin5,HIGH);
     }
+  }
+
   value = digitalRead(buttonPin4);
-  value = !value; //INPUT_PULLUPの値の反転を元に戻す
+  value = !value;
   int analogValue = analogRead(analogInputPin);
   Serial.print(value);
   Serial.print(" ");
