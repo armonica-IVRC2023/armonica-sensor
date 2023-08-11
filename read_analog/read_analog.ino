@@ -13,19 +13,19 @@ void setup() {
 void loop() {
   if (Serial.available() > 0){
     char data = Serial.read();
-    if (data == "0"){
-    digitalWrite(motorPin5,LOW);
-    }else if(data == "1"){
-    digitalWrite(motorPin5,HIGH);
+    if (data == '0'){
+      digitalWrite(motorPin5,LOW);
+    }else if(data == '1'){
+      digitalWrite(motorPin5,HIGH);
     }
-  }
 
-  value = digitalRead(buttonPin4);
-  value = !value;
-  int analogValue = analogRead(analogInputPin);
-  Serial.print(value);
-  Serial.print(" ");
-  Serial.println(analogValue);
+    value = digitalRead(buttonPin4);
+    value = !value;
+    int analogValue = analogRead(analogInputPin);
+    Serial.print(value);
+    Serial.print(' ');
+    Serial.println(analogValue);
+  }
 
   delay(100);
 }
