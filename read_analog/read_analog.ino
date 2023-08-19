@@ -18,14 +18,14 @@ void loop() {
     }else if(data == '1'){
       digitalWrite(motorPin5,HIGH);
     }
-
+  }  
+  
     value = digitalRead(buttonPin4);
     value = !value;
     int analogValue = analogRead(analogInputPin);
     Serial.print(value);
     Serial.print(' ');
     Serial.println(analogValue);
-  }
 
   delay(100);
 }
